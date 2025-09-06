@@ -8,8 +8,8 @@
   </p>
   
   <p align="center">
+    <a href="https://fleet-management-saas.vercel.app/">🌐 Live Demo</a> •
     <a href="#features">Features</a> •
-    <a href="#demo">Demo</a> •
     <a href="#installation">Installation</a> •
     <a href="#tech-stack">Tech Stack</a> •
     <a href="#screenshots">Screenshots</a>
@@ -22,6 +22,14 @@
     <img src="https://img.shields.io/badge/Tailwind%20CSS-4.1.9-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS">
   </p>
 </div>
+
+---
+
+## 🌟 Live Demo
+
+**🌐 [View Live Demo](https://fleet-management-saas.vercel.app/)**
+
+Experience FleetFlow in action with our live deployment on Vercel!
 
 ---
 
@@ -210,6 +218,10 @@ fleet-management-saas/
 ## 🚀 Deployment
 
 ### **Vercel (Recommended)**
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/mustaque01/fleet-management-saas)
+
+**🌐 [Live Demo: https://fleet-management-saas.vercel.app/](https://fleet-management-saas.vercel.app/)**
+
 1. Push your code to GitHub
 2. Connect your repository to [Vercel](https://vercel.com)
 3. Deploy with zero configuration

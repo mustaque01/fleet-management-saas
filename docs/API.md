@@ -41,7 +41,7 @@ Authorization: Bearer <your-token>
 ## Base URL
 
 ```
-Production: https://fleetflow.vercel.app/api
+Production: https://fleet-management-saas.vercel.app/api
 Development: http://localhost:3000/api
 ```
 
@@ -401,7 +401,7 @@ Get cost analysis and financial reports.
 For real-time updates, connect to the WebSocket endpoint:
 
 ```javascript
-const ws = new WebSocket('wss://fleetflow.vercel.app/ws');
+const ws = new WebSocket('wss://fleet-management-saas.vercel.app/ws');
 
 // Subscribe to vehicle updates
 ws.send(JSON.stringify({
@@ -481,7 +481,7 @@ Configure webhooks to receive real-time notifications:
 ### Sandbox Environment
 Use the sandbox environment for testing:
 ```
-Base URL: https://sandbox.fleetflow.vercel.app/api
+Base URL: https://fleet-management-saas.vercel.app/api
 ```
 
 ### Test Data
@@ -489,7 +489,7 @@ The sandbox includes sample data for testing all endpoints.
 
 ## Support
 
-- **Documentation**: [https://docs.fleetflow.app](https://docs.fleetflow.app)
+- **Documentation**: [https://fleet-management-saas.vercel.app/docs](https://fleet-management-saas.vercel.app/docs)
 - **Support Email**: support@fleetflow.app
 - **GitHub Issues**: [https://github.com/mustaque01/fleet-management-saas/issues](https://github.com/mustaque01/fleet-management-saas/issues)
 

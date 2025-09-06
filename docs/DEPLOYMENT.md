@@ -8,7 +8,26 @@ This guide covers deploying FleetFlow to various platforms and environments.
 - [Vercel Deployment](#vercel-deployment)
 - [Netlify Deployment](#netlify-deployment)
 - [Docker Deployment](#docker-deployment)
-- [AWS Deployment](#aws-deployment)
+- [AWS De### Environment Variables
+
+```bash
+# Application
+NEXT_PUBLIC_APP_URL=https://fleet-management-saas.vercel.app
+NODE_ENV=production
+
+# Database
+DATABASE_URL=postgresql://user:pass@host:5432/fleetflow
+
+# Authentication
+JWT_SECRET=your-super-secret-jwt-key
+NEXTAUTH_SECRET=your-nextauth-secret
+NEXTAUTH_URL=https://fleet-management-saas.vercel.app
+
+# API Keys (Optional)
+GOOGLE_MAPS_API_KEY=your-google-maps-key
+SENDGRID_API_KEY=your-sendgrid-key
+STRIPE_SECRET_KEY=your-stripe-key
+```yment)
 - [Environment Variables](#environment-variables)
 - [Database Setup](#database-setup)
 - [Monitoring](#monitoring)

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'FleetFlow - Modern Fleet Management SaaS',
     description: 'Comprehensive fleet management solution with real-time tracking, driver management, and analytics.',
-    url: 'https://fleetflow.vercel.app',
+    url: 'https://fleet-management-saas.vercel.app',
     siteName: 'FleetFlow',
     type: 'website',
   },

@@ -2,6 +2,7 @@
   "name": "fleet-management-saas",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://fleet-management-saas.vercel.app",
   "repository": {
     "type": "git",
     "url": "https://github.com/mustaque01/fleet-management-saas.git"
