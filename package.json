@@ -1,7 +1,11 @@
 {
-  "name": "my-v0-project",
+  "name": "fleet-management-saas",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/fleet-management-saas.git"
+  },
   "scripts": {
     "build": "next build",
     "dev": "next dev",

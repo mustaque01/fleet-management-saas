@@ -99,13 +99,13 @@ export function Footer() {
               </li>
               <li className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-accent" />
-                <span className="text-muted-foreground">+1 (555) 123-4567</span>
+                <span className="text-muted-foreground">+91 6202699935</span>
               </li>
               <li className="flex items-start space-x-2">
                 <MapPin className="h-4 w-4 text-accent mt-0.5" />
                 <span className="text-muted-foreground">
                   123 Business Ave<br />
-                  San Francisco, CA 94105
+                  Indore 452010, India
                 </span>
               </li>
             </ul>
