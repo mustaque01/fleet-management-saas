@@ -4,11 +4,13 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
-import { Search, Truck, MapPin, Clock } from "lucide-react"
+import { Search, Truck, MapPin, Clock, Menu, X } from "lucide-react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 export function HeroSection() {
   const [trackingId, setTrackingId] = useState("")
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const router = useRouter()
 
   const handleTrackPackage = () => {
@@ -21,10 +23,10 @@ export function HeroSection() {
     <section className="relative bg-gradient-to-br from-background via-muted/30 to-background">
       {/* Navigation */}
       <nav className="flex items-center justify-between px-6 py-4 lg:px-8">
-        <div className="flex items-center space-x-2">
+        <Link href="/" className="flex items-center space-x-2">
           <Truck className="h-8 w-8 text-accent" />
           <span className="text-xl font-bold text-foreground">FleetFlow</span>
-        </div>
+        </Link>
         <div className="hidden md:flex items-center space-x-8">
           <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
             Features
@@ -35,14 +37,67 @@ export function HeroSection() {
           <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">
             Contact
           </a>
-          <Button variant="outline" size="sm">
-            Sign In
-          </Button>
-          <Button size="sm" className="bg-accent hover:bg-accent/90">
-            Get Started
-          </Button>
+          <Link href="/login">
+            <Button variant="outline" size="sm">
+              Sign In
+            </Button>
+          </Link>
+          <Link href="/register">
+            <Button size="sm" className="bg-accent hover:bg-accent/90">
+              Get Started
+            </Button>
+          </Link>
         </div>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden"
+        >
+          {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </Button>
       </nav>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-background border-b border-border">
+          <div className="px-6 py-4 space-y-4">
+            <a
+              href="#features"
+              className="block text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Features
+            </a>
+            <a
+              href="#pricing"
+              className="block text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Pricing
+            </a>
+            <a
+              href="#contact"
+              className="block text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contact
+            </a>
+            <div className="flex flex-col space-y-2 pt-4">
+              <Link href="/login">
+                <Button variant="outline" size="sm" className="w-full">
+                  Sign In
+                </Button>
+              </Link>
+              <Link href="/register">
+                <Button size="sm" className="bg-accent hover:bg-accent/90 w-full">
+                  Get Started
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Hero Content */}
       <div className="px-6 py-16 lg:px-8 lg:py-24">
@@ -62,9 +117,11 @@ export function HeroSection() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-accent hover:bg-accent/90">
-                  Start Free Trial
-                </Button>
+                <Link href="/register">
+                  <Button size="lg" className="bg-accent hover:bg-accent/90 w-full sm:w-auto">
+                    Start Free Trial
+                  </Button>
+                </Link>
                 <Button variant="outline" size="lg">
                   Watch Demo
                 </Button>

@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, CheckCircle } from "lucide-react"
+import Link from "next/link"
 
 const benefits = ["Free 14-day trial", "No setup fees", "Cancel anytime", "24/7 support included"]
 
 export function CTASection() {
   return (
-    <section className="py-16 lg:py-24 bg-muted/30">
+    <section id="contact" className="py-16 lg:py-24 bg-muted/30">
       <div className="mx-auto max-w-4xl px-6 lg:px-8">
         <Card className="bg-card border-border shadow-xl">
           <CardContent className="p-12 text-center">
@@ -31,10 +32,12 @@ export function CTASection() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-accent hover:bg-accent/90">
-                  Start Free Trial
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <Link href="/register">
+                  <Button size="lg" className="bg-accent hover:bg-accent/90 w-full sm:w-auto">
+                    Start Free Trial
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
                 <Button variant="outline" size="lg">
                   Schedule Demo
                 </Button>
