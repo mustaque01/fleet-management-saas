@@ -4,13 +4,18 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/fleet-management-saas.git"
+    "url": "https://github.com/mustaque01/fleet-management-saas.git"
   },
   "scripts": {
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "type-check": "tsc --noEmit",
+    "test": "echo \"No tests yet\" && exit 0",
+    "clean": "rm -rf .next out dist",
+    "analyze": "ANALYZE=true next build",
+    "export": "next export"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
