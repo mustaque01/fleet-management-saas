@@ -90,13 +90,13 @@ export function VehicleList({ searchQuery, filters, viewMode }: VehicleListProps
   const getStatusColor = (status: string) => {
     switch (status) {
       case "on-route":
-        return "bg-green-100 text-green-800 border-green-200"
+        return "bg-gradient-to-r from-green-500/20 to-green-600/20 text-green-700 dark:text-green-400 border-green-500/30"
       case "idle":
-        return "bg-yellow-100 text-yellow-800 border-yellow-200"
+        return "bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 text-yellow-700 dark:text-yellow-400 border-yellow-500/30"
       case "maintenance":
-        return "bg-red-100 text-red-800 border-red-200"
+        return "bg-gradient-to-r from-red-500/20 to-red-600/20 text-red-700 dark:text-red-400 border-red-500/30"
       default:
-        return "bg-gray-100 text-gray-800 border-gray-200"
+        return "bg-gradient-to-r from-gray-500/20 to-gray-600/20 text-gray-700 dark:text-gray-400 border-gray-500/30"
     }
   }
 
@@ -114,11 +114,14 @@ export function VehicleList({ searchQuery, filters, viewMode }: VehicleListProps
   }
 
   return (
-    <Card className="bg-card border-border">
+    <Card className="bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border-border/50 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
       <CardHeader>
         <CardTitle className="text-card-foreground flex items-center justify-between">
-          <span>Fleet Vehicles ({filteredVehicles.length})</span>
-          <Button variant="ghost" size="sm">
+          <span className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-gradient-to-r from-accent to-purple-600 rounded-full animate-pulse"></div>
+            Fleet Vehicles ({filteredVehicles.length})
+          </span>
+          <Button variant="ghost" size="sm" className="hover:bg-accent/10">
             <MoreHorizontal className="h-4 w-4" />
           </Button>
         </CardTitle>
@@ -128,32 +131,32 @@ export function VehicleList({ searchQuery, filters, viewMode }: VehicleListProps
           {filteredVehicles.map((vehicle, index) => (
             <div
               key={vehicle.id}
-              className={`p-4 border-b border-border last:border-b-0 hover:bg-muted/50 transition-colors cursor-pointer ${
-                index === 0 ? "bg-accent/5" : ""
+              className={`p-4 border-b border-border/50 last:border-b-0 hover:bg-gradient-to-r hover:from-accent/5 hover:to-purple-600/5 transition-all duration-300 cursor-pointer group ${
+                index === 0 ? "bg-gradient-to-r from-accent/10 to-purple-600/10" : ""
               }`}
             >
               <div className="space-y-3">
                 {/* Header */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-accent/10 rounded-lg">
+                    <div className="p-2 bg-gradient-to-br from-accent/20 to-purple-600/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
                       <Truck className="h-4 w-4 text-accent" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-card-foreground">{vehicle.id}</h3>
+                      <h3 className="font-semibold text-card-foreground group-hover:text-accent transition-colors">{vehicle.id}</h3>
                       <p className="text-sm text-muted-foreground">{vehicle.type}</p>
                     </div>
                   </div>
-                  <Badge className={getStatusColor(vehicle.status)}>{getStatusLabel(vehicle.status)}</Badge>
+                  <Badge className={`${getStatusColor(vehicle.status)} shadow-sm`}>{getStatusLabel(vehicle.status)}</Badge>
                 </div>
 
                 {/* Driver and Location */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 text-sm">
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2 p-2 rounded-lg hover:bg-accent/5 transition-colors">
                     <User className="h-3 w-3 text-muted-foreground" />
                     <span className="text-card-foreground">{vehicle.driver}</span>
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2 p-2 rounded-lg hover:bg-accent/5 transition-colors">
                     <MapPin className="h-3 w-3 text-muted-foreground" />
                     <span className="text-card-foreground">{vehicle.location}</span>
                   </div>
@@ -161,23 +164,23 @@ export function VehicleList({ searchQuery, filters, viewMode }: VehicleListProps
 
                 {/* Stats */}
                 <div className="grid grid-cols-3 gap-4 text-sm">
-                  <div className="flex items-center space-x-2">
-                    <Fuel className="h-3 w-3 text-muted-foreground" />
-                    <span className="text-card-foreground">{vehicle.fuel}%</span>
+                  <div className="flex items-center space-x-2 p-2 rounded-lg hover:bg-green-500/5 transition-colors">
+                    <Fuel className="h-3 w-3 text-green-600" />
+                    <span className="text-card-foreground font-medium">{vehicle.fuel}%</span>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                    <span className="text-card-foreground">{vehicle.speed} mph</span>
+                  <div className="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-500/5 transition-colors">
+                    <div className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 animate-pulse"></div>
+                    <span className="text-card-foreground font-medium">{vehicle.speed} mph</span>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <Clock className="h-3 w-3 text-muted-foreground" />
+                  <div className="flex items-center space-x-2 p-2 rounded-lg hover:bg-accent/5 transition-colors">
+                    <Clock className="h-3 w-3 text-accent" />
                     <span className="text-card-foreground">{vehicle.lastUpdate}</span>
                   </div>
                 </div>
 
                 {/* Destination */}
                 {vehicle.destination !== "N/A" && (
-                  <div className="text-sm">
+                  <div className="text-sm p-2 bg-gradient-to-r from-accent/5 to-purple-600/5 rounded-lg border border-accent/10">
                     <span className="text-muted-foreground">Destination: </span>
                     <span className="text-card-foreground font-medium">{vehicle.destination}</span>
                   </div>

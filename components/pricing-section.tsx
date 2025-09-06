@@ -53,8 +53,13 @@ const plans = [
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="py-16 lg:py-24 bg-background">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section id="pricing" className="py-16 lg:py-24 bg-gradient-to-b from-background via-muted/20 to-background relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"></div>
+      </div>
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl font-bold text-foreground lg:text-4xl text-balance">
             Simple, Transparent Pricing
@@ -68,12 +73,14 @@ export function PricingSection() {
           {plans.map((plan, index) => (
             <Card
               key={index}
-              className={`bg-card border-border relative ${
-                plan.badge ? "ring-2 ring-accent shadow-lg scale-105" : "hover:shadow-lg"
-              } transition-all`}
+              className={`bg-card/50 backdrop-blur-sm border-border/50 relative transition-all duration-500 hover:shadow-xl ${
+                plan.badge 
+                  ? "ring-2 ring-accent/50 shadow-2xl shadow-accent/10 scale-105 hover:scale-110" 
+                  : "hover:shadow-accent/5 hover:scale-[1.02]"
+              }`}
             >
               {plan.badge && (
-                <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent text-accent-foreground">
+                <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-accent to-purple-600 text-white shadow-lg">
                   {plan.badge}
                 </Badge>
               )}
@@ -81,7 +88,9 @@ export function PricingSection() {
                 <CardTitle className="text-xl text-card-foreground">{plan.name}</CardTitle>
                 <div className="space-y-2">
                   <div className="flex items-baseline justify-center space-x-1">
-                    <span className="text-4xl font-bold text-card-foreground">{plan.price}</span>
+                    <span className={`text-4xl font-bold ${plan.badge ? 'bg-gradient-to-r from-accent to-purple-600 bg-clip-text text-transparent' : 'text-card-foreground'}`}>
+                      {plan.price}
+                    </span>
                     <span className="text-muted-foreground">/{plan.period}</span>
                   </div>
                   <p className="text-sm text-muted-foreground">{plan.description}</p>
@@ -98,10 +107,10 @@ export function PricingSection() {
                 </ul>
                 <Link href="/register" className="block">
                   <Button
-                    className={`w-full ${
+                    className={`w-full transition-all duration-300 ${
                       plan.badge
-                        ? "bg-accent hover:bg-accent/90"
-                        : "bg-transparent border border-border hover:bg-muted"
+                        ? "bg-gradient-to-r from-accent to-purple-600 hover:from-accent/90 hover:to-purple-600/90 text-white shadow-lg hover:shadow-xl"
+                        : "bg-transparent border-2 border-border hover:bg-accent/5 hover:border-accent/50"
                     }`}
                     variant={plan.badge ? "default" : "outline"}
                   >

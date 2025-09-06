@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Search, Truck, MapPin, Clock, Menu, X } from "lucide-react"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 
@@ -20,9 +21,15 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative bg-gradient-to-br from-background via-muted/30 to-background">
+    <section className="relative bg-gradient-to-br from-background via-purple-50/30 to-blue-50/30 dark:from-background dark:via-purple-950/20 dark:to-blue-950/20 min-h-screen overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-400/10 dark:bg-purple-400/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-400/10 dark:bg-blue-400/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse"></div>
+      </div>
       {/* Navigation */}
-      <nav className="flex items-center justify-between px-6 py-4 lg:px-8">
+      <nav className="relative z-10 flex items-center justify-between px-6 py-4 lg:px-8 backdrop-blur-sm bg-background/80 border-b border-border/50">
         <Link href="/" className="flex items-center space-x-2">
           <Truck className="h-8 w-8 text-accent" />
           <span className="text-xl font-bold text-foreground">FleetFlow</span>
@@ -37,6 +44,7 @@ export function HeroSection() {
           <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">
             Contact
           </a>
+          <ThemeToggle />
           <Link href="/login">
             <Button variant="outline" size="sm">
               Sign In
@@ -60,7 +68,7 @@ export function HeroSection() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-background border-b border-border">
+        <div className="md:hidden bg-background/95 backdrop-blur-sm border-b border-border/50 relative z-10">
           <div className="px-6 py-4 space-y-4">
             <a
               href="#features"
@@ -100,15 +108,15 @@ export function HeroSection() {
       )}
 
       {/* Hero Content */}
-      <div className="px-6 py-16 lg:px-8 lg:py-24">
+      <div className="relative z-10 px-6 py-16 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Hero Text */}
-            <div className="space-y-8">
+            <div className="space-y-8 animate-fade-in">
               <div className="space-y-4">
                 <h1 className="text-4xl font-bold tracking-tight text-foreground lg:text-6xl text-balance">
                   Modern Fleet Management
-                  <span className="text-accent"> Made Simple</span>
+                  <span className="bg-gradient-to-r from-accent to-purple-600 bg-clip-text text-transparent"> Made Simple</span>
                 </h1>
                 <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
                   Streamline your logistics operations with real-time tracking, intelligent routing, and comprehensive
@@ -118,11 +126,11 @@ export function HeroSection() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/register">
-                  <Button size="lg" className="bg-accent hover:bg-accent/90 w-full sm:w-auto">
+                  <Button size="lg" className="bg-gradient-to-r from-accent to-purple-600 hover:from-accent/90 hover:to-purple-600/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto">
                     Start Free Trial
                   </Button>
                 </Link>
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="lg" className="border-2 hover:bg-accent/5 transition-all duration-300">
                   Watch Demo
                 </Button>
               </div>
@@ -145,8 +153,8 @@ export function HeroSection() {
             </div>
 
             {/* Right Column - Package Tracking Card */}
-            <div className="lg:pl-8">
-              <Card className="bg-card border-border shadow-lg">
+            <div className="lg:pl-8 animate-fade-in">
+              <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02]">
                 <CardContent className="p-8">
                   <div className="space-y-6">
                     <div className="text-center space-y-2">
@@ -160,14 +168,14 @@ export function HeroSection() {
                           placeholder="Enter tracking ID (e.g., FL123456789)"
                           value={trackingId}
                           onChange={(e) => setTrackingId(e.target.value)}
-                          className="pr-12 bg-input border-border"
+                          className="pr-12 bg-input/50 backdrop-blur-sm border-border/50 focus:border-accent/50 transition-all duration-300"
                           onKeyPress={(e) => e.key === "Enter" && handleTrackPackage()}
                         />
                         <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                       </div>
                       <Button
                         onClick={handleTrackPackage}
-                        className="w-full bg-accent hover:bg-accent/90"
+                        className="w-full bg-gradient-to-r from-accent to-purple-600 hover:from-accent/90 hover:to-purple-600/90 text-white shadow-lg hover:shadow-xl transition-all duration-300"
                         disabled={!trackingId.trim()}
                       >
                         Track Package

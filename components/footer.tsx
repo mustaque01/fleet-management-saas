@@ -1,4 +1,4 @@
-import { Truck } from "lucide-react"
+import { Truck, Mail, Phone, MapPin, Github, Twitter, Linkedin } from "lucide-react"
 import Link from "next/link"
 
 const footerLinks = {
@@ -30,35 +30,44 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-muted/30 border-t border-border">
-      <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-6 gap-8">
+    <footer className="bg-gradient-to-t from-muted/50 to-background border-t border-border/50 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      
+      <div className="relative z-10 mx-auto max-w-7xl px-6 py-12 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
-          <div className="col-span-2">
-            <Link href="/" className="flex items-center space-x-2 mb-4">
-              <Truck className="h-6 w-6 text-accent" />
-              <span className="text-lg font-bold text-foreground">FleetFlow</span>
+          <div className="space-y-4">
+            <Link href="/" className="flex items-center space-x-2">
+              <div className="p-2 bg-gradient-to-br from-accent/10 to-purple-600/10 rounded-lg">
+                <Truck className="h-6 w-6 text-accent" />
+              </div>
+              <span className="text-xl font-bold text-foreground">FleetFlow</span>
             </Link>
-            <p className="text-sm text-muted-foreground mb-4 max-w-xs">
-              Modern fleet management made simple. Track, manage, and optimize your fleet operations with ease.
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
+              Modern fleet management solutions that help businesses streamline their logistics operations with 
+              real-time tracking and intelligent routing.
             </p>
             <div className="flex space-x-4">
-              <Link href="/login" className="text-sm text-accent hover:text-accent/80">
-                Sign In
-              </Link>
-              <Link href="/register" className="text-sm text-accent hover:text-accent/80">
-                Get Started
-              </Link>
+              <a href="#" aria-label="Follow us on Twitter" className="text-muted-foreground hover:text-accent transition-colors duration-300">
+                <Twitter className="h-5 w-5" />
+              </a>
+              <a href="#" aria-label="Connect with us on LinkedIn" className="text-muted-foreground hover:text-accent transition-colors duration-300">
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a href="#" aria-label="View our GitHub repository" className="text-muted-foreground hover:text-accent transition-colors duration-300">
+                <Github className="h-5 w-5" />
+              </a>
             </div>
           </div>
 
           {/* Product */}
-          <div>
-            <h3 className="text-sm font-semibold text-foreground mb-4">Product</h3>
-            <ul className="space-y-2">
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-foreground">Product</h3>
+            <ul className="space-y-2 text-sm">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
+                  <Link href={link.href} className="text-muted-foreground hover:text-accent transition-colors duration-300">
                     {link.name}
                   </Link>
                 </li>
@@ -67,12 +76,12 @@ export function Footer() {
           </div>
 
           {/* Company */}
-          <div>
-            <h3 className="text-sm font-semibold text-foreground mb-4">Company</h3>
-            <ul className="space-y-2">
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-foreground">Company</h3>
+            <ul className="space-y-2 text-sm">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
+                  <Link href={link.href} className="text-muted-foreground hover:text-accent transition-colors duration-300">
                     {link.name}
                   </Link>
                 </li>
@@ -80,43 +89,42 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Support */}
-          <div>
-            <h3 className="text-sm font-semibold text-foreground mb-4">Support</h3>
-            <ul className="space-y-2">
-              {footerLinks.support.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h3 className="text-sm font-semibold text-foreground mb-4">Legal</h3>
-            <ul className="space-y-2">
-              {footerLinks.legal.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
+          {/* Contact */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-foreground">Contact</h3>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-center space-x-2">
+                <Mail className="h-4 w-4 text-accent" />
+                <span className="text-muted-foreground">support@fleetflow.com</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <Phone className="h-4 w-4 text-accent" />
+                <span className="text-muted-foreground">+1 (555) 123-4567</span>
+              </li>
+              <li className="flex items-start space-x-2">
+                <MapPin className="h-4 w-4 text-accent mt-0.5" />
+                <span className="text-muted-foreground">
+                  123 Business Ave<br />
+                  San Francisco, CA 94105
+                </span>
+              </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-xs text-muted-foreground">
-              &copy; 2025 FleetFlow. All rights reserved.
-            </p>
-            <p className="text-xs text-muted-foreground mt-2 md:mt-0">
-              Built with ❤️ for modern fleet management
-            </p>
+        {/* Bottom Section */}
+        <div className="mt-12 pt-8 border-t border-border/50">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="text-sm text-muted-foreground">
+              © 2025 FleetFlow. All rights reserved.
+            </div>
+            <div className="flex space-x-6 text-sm">
+              {footerLinks.legal.map((link) => (
+                <Link key={link.name} href={link.href} className="text-muted-foreground hover:text-accent transition-colors duration-300">
+                  {link.name}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>
